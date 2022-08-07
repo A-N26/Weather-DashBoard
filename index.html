@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherDashBoard</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- tab icon -->
+    <link rel="icon" type="image/ico" sizes="48x48" href="assets/images/favicon/weather-favicon.ico"/>
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest"/>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+    <!-- ↓ container-fluid - to span the contents across the entire width of viewport -->
+    <header class="jumbotron container-fluid p-1 text-light d-flex justify-content-center" id="header" style="background-image: linear-gradient(90deg, rgb(81, 126, 194) 2%,rgb(55, 22, 154) 75%);">
+        <h1><strong>Weather Dashboard</strong></h1>
+    </header>
+    <div class="container ms-0 d-flex flex-row justify-content-between">
+        <section class="row">
+            <!-- ↑left column to include search button, search results and clear button -->
+            <div class="col-12 bg-transparent" id="searchBox">
+                <div class="form-group pt-1">
+                    <h2><strong>Search for a City:</strong></h2>
+                    <section class="input-group.sm">
+                        <input type="text" class="form-control mb-2" id="city-name" placeholder="Input City Name." aria-label="Search by City." aria-describedby="search-button">
+                        <div class="searchBtn">
+                        <button class="col-12 bg-primary btn search-submit" type="button" style="color: rgb(202, 217, 230); height: 30px;" id="searchbtn">Search</button>
+                        <hr style="border: none; margin-top: 0px;">
+                        </div>
+                        <div class="clearBtn">
+                            <button class="col-12 bg-primary btn" type="button" style="color: rgb(202, 217, 230); height: 30px;" id="clearbtn">Clear</button>
+                            <hr style="border: 1px solid; background:black;">
+                            <ul class="mt-4 city-list"></ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        <!-- ↓right side section to display various city specific weather details -->
+        <section class="col-9 d-flex justify-content-end">
+            <!-- ↓main hero section on left side -->
+            <div class="border-transparent d-flex flex-column justify-content-end w-100">
+                <div id="liveWeather" class="card mt-3">
+                    <h3 class="title mb-4 mt-2"><strong><span id="presentCity"></span>(<span id="presentDate"></span>)<img id="presentIcon" src="" alt="current weater icon"></strong></h3>
+                    <p>Temperature:<span class="current" id="Temperature"></span>&#8451</p>
+                    <p>Wind:<span class="current" id="Wind"></span>MPH</p>
+                    <p>Humidity:<span class="current" id="Humidity"></span>%</p>
+                    <p>UV index:<span class="current bg-success rounded py-2 px-2 text-white" id="UV"></span></p>
+                </div>
+                <!-- ↓row list of 5 day forcast of displayed city below hero on left -->
+                <div class="mt-2" id="WeatherNext">
+                    <h5><strong>5-Day Forecast:</strong></h5>
+                    <div id="NextDay-forecast" class="row justify-content-around text-light m-2">
+                        <div class="col-2 card bg-primary">
+                            <h6 class="card-title"></h6>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                        <div class="col-2 card bg-primary">
+                            <h6 class="card-title"></h6>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                        <div class="col-2 card bg-primary">
+                            <h6 class="card-title"></h6>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                        <div class="col-2 card bg-primary">
+                            <h6 class="card-title"></h6>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                        <div class="col-2 card bg-primary">
+                            <h6 class="card-title"></h6>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<!-- ↓ always place jquery link above other script(s) to call it's actions 1st -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- bootstrap js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- local js file -->
+<script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+</html>
