@@ -22,7 +22,7 @@ In this challenge, we are tasked with creating a weather dashboard using [openwe
 
 ## Links
 
-- [Github repo link](https://github.com/A-N26/)
+- [Github repo link](https://github.com/A-N26/Weather-DashBoard.git)
 
 ## Additions
 
