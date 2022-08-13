@@ -1,6 +1,12 @@
 * {
     box-sizing: border-box;
 }
+#searched-list {
+    margin-right: -1px;
+}
+.Five-card {
+    background-color: #263341;
+}
 li:hover {
     background-color: grey;
     text-decoration: underline;
